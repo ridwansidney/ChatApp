@@ -1,0 +1,7 @@
+<div class="dashboard">
+  <h2>Groups</h2>
+  <div *ngFor="let group of groups">
+    <h3>{{ group.name }}</h3>
+    <button (click)="joinGroup(group.id)">Join Group</button>
+  </div>
+</div>
