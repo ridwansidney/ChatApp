@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Group } from '../models/group.model';
 import { User } from '../models/user.model';
+import { ApiService } from '../api.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,7 @@ export class DashboardComponent {
     { id: '2', name: 'Group 2', channels: [{ id: '2', name: 'Channel 2' }] }
   ];
 
-  constructor() {
+  constructor(private apiService: ApiService) {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
@@ -38,6 +40,13 @@ export class DashboardComponent {
 if (user.role === 'Super Admin') {
   console.log(`Promoted user: ${username}`);
 }
+}
+
+ngOnInit() {
+  this.apiService.getWelcomeMessage().subscribe({
+    next: (message) => console.log(message),
+    error: (error) => console.error(error)
+  });
 }
 
 }
