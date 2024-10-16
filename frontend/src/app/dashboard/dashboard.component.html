@@ -4,4 +4,7 @@
     <h3>{{ group.name }}</h3>
     <button (click)="joinGroup(group.id)">Join Group</button>
   </div>
+  <div *ngIf="user.role === 'Super Admin'">
+    <button (click)="promoteUser(user.username)">Promote to Group Admin</button>
+  </div>
 </div>
