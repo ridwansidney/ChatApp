@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.send('ChatApp Backend is Running!');
 });
 
-const PORT = 5000;
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
