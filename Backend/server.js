@@ -1,21 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-
 const app = express();
+const PORT = 3000;
+
 app.use(cors());
 app.use(express.json());
 
-const roleAuthorization = require('./auth');
-app.post('/admin/promote', roleAuthorization('Super Admin'), (req, res) => {
-    // Logic for promoting a user
-    res.send('User promoted successfully');
-  });
+const authRoutes = require('./routes/authRoutes');
+const groupRoutes = require('./routes/groupRoutes');
+const adminRoutes = require('./routes/admin');
 
-app.get('/', (req, res) => {
-    res.send('ChatApp Backend is Running!');
-});
+app.use('/api/auth', authRoutes);
+app.use('/api/groups', groupRoutes);
+app.use('/api/admin', adminRoutes);
 
-const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port http://localhost:${PORT}`);
 });
