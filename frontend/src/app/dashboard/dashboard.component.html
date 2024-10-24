@@ -1,10 +1,16 @@
-<div class="dashboard">
-  <h2>Groups</h2>
-  <div *ngFor="let group of groups">
-    <h3>{{ group.name }}</h3>
-    <button (click)="joinGroup(group.id)">Join Group</button>
+<div class="dashboard-container">
+  <h2>Dashboard</h2>
+  <h3>Welcome, {{ user?.username }} ({{ user?.role }})</h3>
+  <div *ngIf="user?.role === 'SuperAdmin'">
+    <h4>Super Admin Options</h4>
+    <app-super-admin-ui></app-super-admin-ui>
   </div>
-  <div *ngIf="user.role === 'Super Admin'">
-    <button (click)="promoteUser(user.username)">Promote to Group Admin</button>
+  <div *ngIf="user?.role === 'GroupAdmin'">
+    <h4>Group Admin Options</h4>
+    <app-group-admin-ui></app-group-admin-ui>
+  </div>
+  <div *ngIf="user?.role === 'User'">
+    <h4>User Options</h4>
+    <app-user-ui></app-user-ui>
   </div>
 </div>
