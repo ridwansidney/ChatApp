@@ -9,16 +9,10 @@ import { UserUIComponent } from './user-ui/user-ui.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    children: [
-      { path: 'super-admin', component: SuperAdminUIComponent },
-      { path: 'group-admin', component: GroupAdminUIComponent },
-      { path: 'user', component: UserUIComponent }
-    ]
-  },
-  { path: '**', redirectTo: '/login' }
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'super-admin', component: SuperAdminUIComponent },
+  { path: 'group-admin', component: GroupAdminUIComponent },
+  { path: 'user', component: UserUIComponent }
 ];
 
 @NgModule({

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { GroupService } from '../service/group.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-ui',
   templateUrl: './user-ui.component.html',
+  standalone: true,
+  imports: [RouterModule]
 })
 export class UserUIComponent {
   channels: any[] = [];
