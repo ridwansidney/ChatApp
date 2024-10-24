@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const roleAuthorization = require('../middleware/roleAuthorization');
+const authController = require('../controllers/authController');
 
-router.post('/promote', roleAuthorization('SuperAdmin'), (req, res) => {
-  res.send('User promoted successfully');
-});
+router.post('/login', authController.login);
 
 module.exports = router;
