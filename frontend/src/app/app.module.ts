@@ -13,7 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-  declarations: [
+declarations:[
   LoginComponent,
   ChatComponent,
   DashboardComponent
