@@ -1,33 +1,32 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { ChatComponent } from './chat/chat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { SuperAdminUIComponent } from './super-admin-ui/super-admin-ui.component';
+import { GroupAdminUIComponent } from './group-admin-ui/group-admin-ui.component';
+import { UserUIComponent } from './user-ui/user-ui.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
 declarations:[
-  LoginComponent,
-  ChatComponent,
-  DashboardComponent
+  DashboardComponent,
+  SuperAdminUIComponent,
+  GroupAdminUIComponent,
+  UserUIComponent
   ],
 
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    FormsModule,
     RouterModule
   ],
-  providers: [
-    provideHttpClient()
-  ],
+
+  providers: [],
 })
 export class AppModule {}

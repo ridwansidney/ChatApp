@@ -1,43 +1,26 @@
-import { Component } from '@angular/core';
-import { Group } from '../models/group.model';
-import { User } from '../models/user.model';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GroupService } from '../service/group.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-  user: User;
-  groups: Group[] = [
-    { id: '1', name: 'Group 1', channels: [{ id: '1', name: 'Channel 1' }] },
-    { id: '2', name: 'Group 2', channels: [{ id: '2', name: 'Channel 2' }] }
-  ];
+  user: any;
+  groups: any[] = [];
 
-  constructor() {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-  }
+  constructor(private router: Router, private groupService: GroupService) {}
 
-//Logic to join groups
-  joinGroup(groupId: string) {
-    let user = JSON.parse(localStorage.getItem('user') || '{}');
-    user.groups = user.groups || [];
-    if (!user.groups.includes(groupId)) {
-      user.groups.push(groupId);
-      localStorage.setItem('user', JSON.stringify(user));
+  ngOnInit() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      this.user = JSON.parse(loggedInUser);
+      this.groups = this.groupService.getGroups().filter(group => group.members.includes(this.user.username));
+    } else {
+      this.router.navigate(['/']);
     }
   }
-
- //Logic to promote a user
- promoteUser(username: string) {
-  let user = JSON.parse(localStorage.getItem('user') || '{}');
-  if (!username) {
-      console.error('No username provided for promotion.');
-      return;
-  }
-if (user.role === 'Super Admin') {
-  console.log(`Promoted user: ${username}`);
-}
-}
-
 }
