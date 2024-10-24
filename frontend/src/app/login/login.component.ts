@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
