@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const groupController = require('../controllers/groupController');
+const groupController = require('../Controllers/groupController'); 
 
 router.get('/', groupController.getGroups);
 router.post('/', groupController.addGroup);
@@ -9,3 +9,4 @@ router.delete('/:groupId/members/:username', groupController.removeMemberFromGro
 router.get('/:groupId/channels', groupController.getChannels);
 
 module.exports = router;
+

@@ -8,7 +8,7 @@ app.use(express.json());
 
 const authRoutes = require('./routes/authRoutes');
 const groupRoutes = require('./routes/groupRoutes');
-const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/adminRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/groups', groupRoutes);
