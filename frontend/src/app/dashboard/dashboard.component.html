@@ -2,12 +2,15 @@
   <h2>Dashboard</h2>
   <h3>Welcome, {{ user?.username }} ({{ user?.role }})</h3>
   <div *ngIf="user?.role === 'SuperAdmin'">
+    <h4>Super Admin Options</h4>
     <app-super-admin-ui></app-super-admin-ui>
   </div>
   <div *ngIf="user?.role === 'GroupAdmin'">
+    <h4>Group Admin Options</h4>
     <app-group-admin-ui></app-group-admin-ui>
   </div>
   <div *ngIf="user?.role === 'User'">
+    <h4>User Options</h4>
     <app-user-ui></app-user-ui>
   </div>
 </div>
