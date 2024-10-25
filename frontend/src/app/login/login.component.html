@@ -4,10 +4,10 @@
       <h2 class="brand-title mb-4">VILLAGE CONNECT</h2>
       <form (ngSubmit)="handleLogin()">
         <div class="form-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" required/>
+          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" name="username" required/>
         </div>
         <div class="form-group mb-4">
-          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" required/>
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required/>
         </div>
         <div class="d-grid">
           <button type="submit" class="btn btn-primary btn-block">Log In</button>

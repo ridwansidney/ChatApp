@@ -20,6 +20,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) {}
 
   handleLogin() {
+    console.log('Login attempt:', this.username, this.password);
     this.http.post('http://localhost:3000/api/auth/login', { username: this.username, password: this.password })
       .subscribe(
         (user: any) => {

@@ -5,6 +5,7 @@ let users = [
   ];
   
   exports.login = (req, res) => {
+    console.log('Request Body:', req.body);
     const { username, password } = req.body;
     const user = users.find(u => u.username === username && u.password === password);
     if (user) {

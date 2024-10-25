@@ -20,6 +20,57 @@ export class DashboardComponent {
   user: any;
   groups: any[] = [];
 
+  recentUsers = [
+    {
+      name: 'Jason ',
+      avatarUrl: 'https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg',
+      lastMessage: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.',
+      lastMessageDate: '25 Dec',
+      active: true
+    },
+    {
+      name: 'Frat House',
+      avatarUrl: 'https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg',
+      lastMessage: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.',
+      lastMessageDate: '25 Dec',
+      active: true
+    }
+    // Add more user objects as needed
+  ];
+
+  chatMessages = [
+    {
+      content: 'Test, which is a new approach to have all solutions astrology under one roof.',
+      timestamp: '12:00 PM | Aug 13',
+      isSender: false,
+      avatarUrl: 'https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg'
+    },
+    {
+      content: 'Test which is a new approach to have all solutions astrology under one roof.',
+      timestamp: '12:00 PM | Aug 13',
+      isSender: true
+    }
+    // Add more message objects as needed
+  ];
+
+  newMessage = '';
+
+  selectUser(user: any) {
+    // Logic to select user and load chat
+    console.log('User selected:', user);
+  }
+
+  sendMessage() {
+    if (this.newMessage.trim()) {
+      this.chatMessages.push({
+        content: this.newMessage,
+        timestamp: new Date().toLocaleTimeString(),
+        isSender: true
+      });
+      this.newMessage = '';
+    }
+  }
+
   constructor(private router: Router, private http: HttpClient, private groupService: GroupService) {}
 
   ngOnInit() {

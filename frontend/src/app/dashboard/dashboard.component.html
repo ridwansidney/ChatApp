@@ -1,16 +1,78 @@
-<div class="dashboard-container">
-  <h2>Dashboard</h2>
-  <h3>Welcome, {{ user?.username }} ({{ user?.role }})</h3>
+<div class="container-fluid py-5 px-4 h-100">
+  <div class="col-9 chat-window">
+    <div class="chat-header">
+      <h3>Welcome, {{ user?.username }} ({{ user?.role }})</h3>
+
+      <div class="row rounded-lg overflow-hidden shadow h-100">
+        <!-- Users box-->
+        <div class="col-4 px-0 h-100">
+          <div class="bg-white h-100">
+            <div class="bg-light px-4 py-2">
+              <p class="h5 mb-0 py-1">Recent</p>
+            </div>
+
+            <div class="messages-box">
+              <div class="list-group rounded-0">
+                <a
+                  *ngFor="let user of recentUsers"
+                  class="list-group-item list-group-item-action"
+                  [ngClass]="{'active text-white': user.active, 'rounded-0': true}"
+                  (click)="selectUser(user)"
+                >
+                  <div class="media">
+                    <img [src]="user.avatarUrl" alt="user" width="50" class="rounded-circle">
+                    <div class="media-body ml-4">
+                      <div class="d-flex align-items-center justify-content-between mb-1">
+                        <h6 class="mb-0">{{ user.name }}</h6>
+                        <small class="small font-weight-bold">{{ user.lastMessageDate }}</small>
+                      </div>
+                      <p class="font-italic mb-0 text-small">{{ user.lastMessage }}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Chat Box-->
+<div class="col-8 px-0 h-100 d-flex flex-column">
+  <div class="px-4 py-5 chat-box bg-white flex-grow-1 overflow-auto">
+    <!-- Messages -->
+    <div *ngFor="let message of chatMessages" class="media mb-3" [ngClass]="{'w-50': true, 'ml-auto': message.isSender}">
+      <img *ngIf="!message.isSender" [src]="message.avatarUrl" alt="user" width="50" class="rounded-circle">
+      <div class="media-body" [ngClass]="{'ml-3': !message.isSender}">
+        <div [ngClass]="{'bg-light': !message.isSender, 'bg-primary': message.isSender, 'rounded': true, 'py-2': true, 'px-3': true, 'mb-2': true}">
+          <p [ngClass]="{'text-small': true, 'mb-0': true, 'text-muted': !message.isSender, 'text-white': message.isSender}">{{ message.content }}</p>
+        </div>
+        <p class="small text-muted">{{ message.timestamp }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typing area -->
+  <form (ngSubmit)="sendMessage()" class="bg-light">
+    <div class="input-group">
+      <input [(ngModel)]="newMessage" name="message" type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+      <div class="input-group-append">
+        <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+<div class="chat-body mt-3">
   <div *ngIf="user?.role === 'SuperAdmin'">
-    <h4>Super Admin Options</h4>
     <app-super-admin-ui></app-super-admin-ui>
   </div>
+
   <div *ngIf="user?.role === 'GroupAdmin'">
-    <h4>Group Admin Options</h4>
     <app-group-admin-ui></app-group-admin-ui>
   </div>
+
   <div *ngIf="user?.role === 'User'">
-    <h4>User Options</h4>
     <app-user-ui></app-user-ui>
   </div>
+</div>
+</div>
 </div>

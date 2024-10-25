@@ -1,0 +1,41 @@
+.container {
+  max-width: 1200px;
+}
+.chat-box {
+  height: 500px;
+  overflow-y: auto;
+}
+.bg-light {
+  background: linear-gradient(135deg, rgba(0,128,128, 0.6), rgba(0,255,127, 0.6), rgba(0,191,255, 0.6));
+}
+.btn-link {
+  color: #ff0000;
+}
+.chat-body {
+  font-family: 'Instagram Sans', sans-serif;
+}
+
+
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    background: linear-gradient(135deg, rgba(0,191,255, 0.6), rgba(0,255,127, 0.6), rgba(0,128,128, 0.6));
+  }
+  .sidebar {
+    display: none;
+  }
+  .chat-window {
+    margin: 0;
+    padding: 10px;
+  }
+  .chat-header {
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .dashboard-container {
+    background: linear-gradient(135deg, rgba(0,128,128, 0.6), rgba(0,191,255, 0.6), rgba(0,255,127, 0.6));
+  }
+}
+

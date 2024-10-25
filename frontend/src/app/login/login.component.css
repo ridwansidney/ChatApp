@@ -1,0 +1,65 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, rgba(0,128,128, 0.6), rgba(0,255,127, 0.6), rgba(0,191,255, 0.6)) !important;
+  background-size: cover
+}
+
+.login-container {
+  max-width: 350px;
+  width: 100%;
+}
+
+.container {
+  background: linear-gradient(135deg, rgba(0,128,128, 0.6), rgba(0,255,127, 0.6), rgba(0,191,255, 0.6)) !important;
+  background-size: cover;
+  height: 100vh;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.brand-title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.form-control {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #a8a8a8;
+}
+
+.btn-primary {
+  background-color: #0095f6;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #007acb;
+}
+
+.text-primary {
+  color: #0095f6;
+}
+
+.text-primary:hover {
+  color: #007acb;
+}
+
+p {
+  font-size: 14px;
+}
